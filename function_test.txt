@@ -1,0 +1,51 @@
+#!/bin/sh
+
+
+# Calling one function from another
+number_one () {
+   echo "This is the first function speaking..."
+   echo "enter your name"
+   read name
+   echo "Your name is $name."
+   number_two
+}
+
+number_two () {
+   echo "This is now the second function speaking..."
+   echo "Your name is $name."
+}
+
+# Calling function one.
+number_one
+
+
+# Define your function here
+HelloRet () {
+   echo "Hello World $1 $2"
+   return 10
+}
+
+# Invoke your function
+HelloRet Zara Ali
+
+# Capture value returnd by last command
+ret=$?
+
+echo "Return value is $ret"
+
+
+# Define your function here
+Hello () {
+   echo "Hello World $1 $2"
+}
+
+# Define your function here
+#Hello () {
+#   echo "Hello World"
+#}
+
+# Invoke your function
+Hello
+# Invoke your function
+Hello Zara Ali
+echo "Your name is $name."
