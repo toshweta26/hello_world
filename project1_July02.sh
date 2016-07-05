@@ -14,7 +14,7 @@ echo "Cherrypicking the selected change"
 git cherry-pick $singlechange
 read -rsp $'\n\nYou are about to push the cherry-picked change from the bitbucket branch.\n' -n1 key
 echo "Pushing the cherrypicked change"
-git push bitbucket
+git push bitrepo
 }
 
 # Single change function
