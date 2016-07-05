@@ -1,6 +1,21 @@
 #!/bin/bash
+# Ensure we have branch "bitbucket" used for pushing code to another repository.
+# The destination repository is bitbucket 
 
 # Functions
+
+# Function to push single change to the destination repository
+pushsinglechange()
+{
+read -rsp $'\n\nYou are about to move to a bitbucket branch.\n' -n1 key
+git checkout bitbucket #checking out a branch bitbucket which is in sync with the destination environment
+read -rsp $'\n\nYou are about to cherry-pick a change in a bitbucket branch.\n' -n1 key
+echo "Cherrypicking the selected change"
+#git cherry-pick $singlechange
+read -rsp $'\n\nYou are about to push the cherry-picked change from the bitbucket branch.\n' -n1 key
+echo "Pushing the cherrypicked change"
+#git push bitbucket
+}
 
 # Single change function
 singlechange()
@@ -18,8 +33,7 @@ git show --oneline $singlechange
 echo $'\n\n'
 echo "Are you sure you want to move the change $singlechange from $envorigin to $envdestination environment."
 read -rsp $' Press any key to continue or Ctrl+C to exit.' -n1 key
-#createbranch
-
+pushsinglechange
 
 echo "You have successfully continued."
 }
@@ -31,12 +45,6 @@ echo "this is the multiple change block."
 
 }
 
-# Create new branch function
-# Ensure if we really need this function
-createbranch()
-{
-git checkout -b newchange
-}
 
 # Main function
 
